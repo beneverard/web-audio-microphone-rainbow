@@ -1,10 +1,12 @@
 // set up audio context
 const audioContext = window.AudioContext || window.webkitAudioContext;
 
+let audioAPI;
+
 // create audio class
 if (audioContext) {
   // Web Audio API is available.
-  const audioAPI = new audioContext();
+  audioAPI = new audioContext();
 } else {
   // Web Audio API is not available. Ask the user to use a supported browser.
   alert(
@@ -93,4 +95,3 @@ function gotStream(stream) {
 navigator.mediaDevices
   .getUserMedia({ audio: true, video: false })
   .then(gotStream);
-
